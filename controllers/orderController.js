@@ -7,7 +7,6 @@ router.get("/", async (req, res) => {
     var orderList = await orderService.getAllOrders();
     res.json(orderList).status(200);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Something went wrong" });
   }
 });
@@ -21,7 +20,6 @@ router.get("/:id", async (req, res) => {
       res.json(order).status(200);
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Something went wrong" });
   }
 });
@@ -31,7 +29,6 @@ router.post("/", async (req, res) => {
     const result = await orderService.createOrder(req.body);
     res.status(200).json({ statusCode: 200, message: result });
   } catch (error) {
-    console.log(error);
     res.status(500).send({ message: "Something went wrong" });
   }
 });
@@ -45,7 +42,6 @@ router.put("/:id", async (req, res) => {
     const result = await orderService.updateOrder(req.params.id, req.body);
     res.status(200).json({ message: { result } });
   } catch (error) {
-    console.log(error);
     res.status(500).send({ message: "Something went wrong" });
   }
 });
